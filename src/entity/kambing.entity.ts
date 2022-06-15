@@ -20,4 +20,7 @@ export class KambingEntity extends BaseEntity {
     
     @Column()
     umur: number;
+    
+    @Column()
+    qr_code: string;
 }
