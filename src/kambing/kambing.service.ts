@@ -18,12 +18,22 @@ export class KambingService {
         const kambing_data = KambingEntity.create(kambingdata);
         await kambing_data.save();
         const lastdata = await KambingEntity.find();
-        console.log(lastdata[lastdata.length-1])
+        const lastid=lastdata[lastdata.length-1].id_kambing
+        const urldata='https://sikambing.up.railway.app/kambing/getdetail/'+lastid
+        var QRCode = require('qrcode')
+        QRCode.toDataURL(urldata, function (err, url) {
+            lastdata[lastdata.length-1].qr_code=url
+            const kambing_data = KambingEntity.create(lastdata[lastdata.length-1]);
+            kambing_data.save();
+          })
+        console.log(urldata)
         return kambing_data;
     }
 
-    async update(id: number,kambingdata: KambingEntity){
-        return await KambingEntity.update(id,kambingdata);
+    async update(kambingdata: KambingEntity){
+        const kambing_data = KambingEntity.create(kambingdata);
+        await kambing_data.save();
+        return await kambing_data
     }
 
     async delete(id) {
@@ -31,6 +41,9 @@ export class KambingService {
     }
 
     async getDetailById(kambingid){
-        return await KambingEntity.findOne(kambingid);
+        return await KambingEntity.findOne({
+            where:
+            {id_kambing:kambingid}
+        });
     }
 }
