@@ -41,9 +41,12 @@ export class KambingService {
     }
 
     async getDetailById(kambingid){
-        return await KambingEntity.findOne({
+        let arr=[];
+        const data=await KambingEntity.findOne({
             where:
             {id_kambing:kambingid}
         });
+        arr.push(data)
+        return arr;
     }
 }

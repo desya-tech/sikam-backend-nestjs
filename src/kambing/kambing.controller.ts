@@ -15,9 +15,9 @@ export class KambingController {
       return this.KambingService.create(data);
     }
 
-    @Put('update')
+    @Post('update')
     edit(@Param('id') id: number, @Body() data: KambingEntity){
-      return this.KambingService.create(data);
+      return this.KambingService.update(data);
     }
 
     @Get('getdetail/:id')
