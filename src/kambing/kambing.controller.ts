@@ -16,7 +16,7 @@ export class KambingController {
     }
 
     @Post('update')
-    edit(@Param('id') id: number, @Body() data: KambingEntity){
+    edit(@Body() data: KambingEntity){
       return this.KambingService.update(data);
     }
 
