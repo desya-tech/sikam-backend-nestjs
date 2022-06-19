@@ -4,6 +4,7 @@ import { AppService } from './app.service';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { KambingModule } from './kambing/kambing.module';
+import { UserModule } from './user/user.module';
 
 @Module({
   imports: [
@@ -25,7 +26,8 @@ import { KambingModule } from './kambing/kambing.module';
       }),
       inject: [ConfigService],
     }),
-    KambingModule
+    KambingModule,
+    UserModule
   ],
   controllers: [AppController],
   providers: [AppService],
