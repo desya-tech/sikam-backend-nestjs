@@ -26,7 +26,6 @@ export class KambingService {
             const kambing_data = KambingEntity.create(lastdata[lastdata.length-1]);
             kambing_data.save();
           })
-        console.log(urldata)
         return kambing_data;
     }
 
