@@ -16,7 +16,7 @@ export class UserEntity extends BaseEntity {
     email: string;
 
     @Column()
-    no_hp: number;
+    no_hp: string;
     
     @Column()
     roleid: number;
