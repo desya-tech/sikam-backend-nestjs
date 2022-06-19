@@ -8,6 +8,9 @@ export class KambingEntity extends BaseEntity {
     
     @Column()
     nama: string;
+    
+    @Column()
+    kelamin: string;
 
     @Column()
     jenis: string;
@@ -23,4 +26,10 @@ export class KambingEntity extends BaseEntity {
     
     @Column()
     qr_code: string;
+
+    @Column()
+    gambar: string;
+
+    @Column()
+    deskripsi: string;
 }

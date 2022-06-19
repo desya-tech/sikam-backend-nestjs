@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Post, Put } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
 import { KambingEntity } from 'src/entity/kambing.entity';
 import { KambingService } from './kambing.service';
 
@@ -23,5 +23,10 @@ export class KambingController {
     @Get('getdetail/:id')
     show(@Param('id') id: number) {
       return this.KambingService.getDetailById(id);
+    }
+
+    @Delete('delete/:id')
+    deletedata(@Param('id') id: number) {
+      return this.KambingService.delete(id);
     }
 }
