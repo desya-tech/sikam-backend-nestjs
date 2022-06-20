@@ -30,10 +30,10 @@ export class UserService {
         return arr;
     }
 
-    async findByEmail(username22: string) {
+    async findByEmail(emaildata: string) {
         return await UserEntity.findOne({
           where: {
-            username: username22,
+            email: emaildata,
           },
         });
       }
