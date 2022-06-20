@@ -21,12 +21,16 @@ export class AuthService {
     };
 
     return {
-      user_id: user.user_id,
+      "success":true,
+      "message":[{
+        user_id: user.user_id,
       username: user.username,
       email: user.email,
       roleid: user.roleid,
       no_hp: user.no_hp,
       token: this.jwtService.sign(payload),
+      }]
+      
     };
   }
 
