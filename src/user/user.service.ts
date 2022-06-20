@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { UserEntity } from 'src/entity/user.entity';
+import * as bcrypt from 'bcrypt'
 
 @Injectable()
 export class UserService {
@@ -8,6 +9,7 @@ export class UserService {
     }
 
     async createOrUpdate(data: UserEntity) {
+        data.password= await bcrypt.hash(data.password,8);
         const user_data = UserEntity.create(data);
         await user_data.save();
 
@@ -27,4 +29,12 @@ export class UserService {
         arr.push(data)
         return arr;
     }
+
+    async findByEmail(username22: string) {
+        return await UserEntity.findOne({
+          where: {
+            username: username22,
+          },
+        });
+      }
 }

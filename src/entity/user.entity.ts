@@ -1,5 +1,5 @@
 import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from "typeorm";
-
+import * as bcrypt from 'bcrypt';
 
 @Entity("m_user")
 export class UserEntity extends BaseEntity {
@@ -20,4 +20,8 @@ export class UserEntity extends BaseEntity {
     
     @Column()
     roleid: number;
+
+    async validatePassword(password: string): Promise<boolean> {
+        return await bcrypt.compare(password, this.password);
+      }
 }
