@@ -9,7 +9,10 @@ export class UserService {
     }
 
     async createOrUpdate(data: UserEntity) {
-        data.password= await bcrypt.hash(data.password,8);
+        if(data.user_id==null){
+            data.password= await bcrypt.hash(data.password,8);
+        }
+        
         const user_data = UserEntity.create(data);
         await user_data.save();
 
