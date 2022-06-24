@@ -18,12 +18,13 @@ export class KambingService {
         const kambing_data = KambingEntity.create(kambingdata);
         await kambing_data.save();
         const lastdata = await KambingEntity.find();
-        const lastid=lastdata[lastdata.length-1].id_kambing
+        const lastid=lastdata[0].id_kambing;
         const urldata='https://sikambing.up.railway.app/kambing/getdetail/'+lastid
         var QRCode = require('qrcode')
         QRCode.toDataURL(urldata, function (err, url) {
-            lastdata[lastdata.length-1].qr_code=url
-            const kambing_data = KambingEntity.create(lastdata[lastdata.length-1]);
+            lastdata[0].qr_code=url
+            
+            const kambing_data = KambingEntity.create(lastdata[0]);
             kambing_data.save();
           })
         return kambing_data;
