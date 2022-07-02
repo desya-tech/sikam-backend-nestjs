@@ -31,6 +31,7 @@
     "bcrypt": "^5.0.1",
     "canvas": "^2.9.3",
     "mysql": "^2.18.1",
+    "node-gyp": "^9.0.0",
     "npm": "^8.12.1",
     "passport": "^0.6.0",
     "passport-jwt": "^4.0.0",
