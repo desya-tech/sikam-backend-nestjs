@@ -1,10 +1,12 @@
-import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, Put, UseGuards } from '@nestjs/common';
+import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 import { KambingEntity } from 'src/entity/kambing.entity';
 import { KambingService } from './kambing.service';
 
 @Controller('kambing')
 export class KambingController {
     constructor(private KambingService:KambingService){}
+    @UseGuards(JwtAuthGuard)
     @Get('')
     read(): Promise<KambingEntity[]> {
       return this.KambingService.readAll();
@@ -28,5 +30,10 @@ export class KambingController {
     @Delete('delete/:id')
     deletedata(@Param('id') id: number) {
       return this.KambingService.delete(id);
+    }
+
+    @Get('getkambingmati')
+    getkambingmati(): Promise<KambingEntity[]> {
+      return this.KambingService.getKambingMati();
     }
 }

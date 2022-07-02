@@ -32,4 +32,13 @@ export class KambingEntity extends BaseEntity {
 
     @Column()
     deskripsi: string;
+
+    @Column()
+    status: string;
+    
+    @Column()
+    tanggal_lahir: string;
+    
+    @Column()
+    tanggal_mati: string;
 }
