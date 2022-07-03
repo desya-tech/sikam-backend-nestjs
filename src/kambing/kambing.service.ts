@@ -129,4 +129,44 @@ export class KambingService {
             
         }
     }
+
+    async getKambingHidup(){
+        try {
+            const data2= await this.kambingRepository
+        .createQueryBuilder('km')
+        .select('km.id_kambing as id_kambing')
+        .addSelect('km.nama as nama')
+        .addSelect('km.kelamin as kelamin')
+        .addSelect('km.jenis as jenis')
+        .addSelect('km.berat as berat')
+        .addSelect('km.tinggi as tinggi')
+        .addSelect('km.umur as umur')
+        .addSelect('km.qr_code as qr_code')
+        .addSelect('km.gambar as gambar')
+        .addSelect('km.deskripsi as deskripsi')
+        .addSelect('km.status as status')
+        .addSelect('km.tanggal_lahir as tanggal_lahir')
+        .addSelect('km.tanggal_mati as tanggal_mati')
+        .where(`km.status = 'Hidup'`)
+        .orderBy('km.tanggal_lahir',"DESC")
+        .getRawMany()
+        return data2;
+        } catch (error) {
+            
+        }
+    }
+
+    async countbystatus(){
+        try {
+            const data= await this.kambingRepository
+        .createQueryBuilder('km')
+        .select('km.status as status')
+        .addSelect('Count(km.status) as jumlah')
+        .groupBy('km.status')
+        .getRawMany()
+        return data;
+        } catch (error) {
+            
+        }
+    }
 }

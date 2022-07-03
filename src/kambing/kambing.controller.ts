@@ -36,4 +36,14 @@ export class KambingController {
     getkambingmati(): Promise<KambingEntity[]> {
       return this.KambingService.getKambingMati();
     }
+
+    @Get('getkambinghidup')
+    getKambingHidup(){
+      return this.KambingService.getKambingHidup();
+    }
+
+    @Get('count')
+    countbystatus(): Promise<KambingEntity[]> {
+      return this.KambingService.countbystatus();
+    }
 }
