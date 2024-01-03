@@ -1,0 +1,26 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- main
+
+pool:
+  name: Local - Windows - Dell
+  demands: agent.name -equals DELLWINLOCAL
+
+steps:
+- script: npm install
+  displayName: 'Install npm'
+
+- script: npm run build
+  displayName: 'Run nest js with npm'
+
+- task: AzureRmWebAppDeployment@4
+  inputs:
+    ConnectionType: 'AzureRM'
+    appType: 'webApp'
+    WebAppName: 'sikam'
+    packageForLinux: '$(System.DefaultWorkingDirectory)/dist/'
+    StartupCommand: 'npm run start'
