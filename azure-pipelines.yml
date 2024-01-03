@@ -11,7 +11,7 @@ pool:
   demands: agent.name -equals DELLWINLOCAL
 
 steps:
-- script: echo Hello, world!
+- script: dir
   displayName: 'Run a one-line script'
 
 - script: |
