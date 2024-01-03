@@ -15,12 +15,4 @@ steps:
   displayName: 'Install npm'
 
 - script: npm run build
-  displayName: 'Run nest js with npm'
-
-- task: AzureRmWebAppDeployment@4
-  inputs:
-    ConnectionType: 'AzureRM'
-    appType: 'webApp'
-    WebAppName: 'sikam'
-    packageForLinux: '$(System.DefaultWorkingDirectory)/dist/'
-    StartupCommand: 'npm run start'
+  displayName: 'Build Nestjs'
