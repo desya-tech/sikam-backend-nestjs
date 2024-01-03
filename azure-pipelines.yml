@@ -7,7 +7,8 @@ trigger:
 - main
 
 pool:
-  vmImage: ubuntu-latest
+  name: Local - Windows - Dell
+  demands: agent.name -equals DELLWINLOCAL
 
 steps:
 - script: echo Hello, world!
